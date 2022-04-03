@@ -1,2 +1,1 @@
-# CodingTest
-2022 / Repository For CodingTest
+> 백준부터 시작하는 나의 코딩테스트 생활
