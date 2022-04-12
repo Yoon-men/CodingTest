@@ -1,0 +1,5 @@
+# Site Score
+
+U_R, T_R, U_O, T_O = list(map(int, input().split()))
+
+print(56*U_R + 24*T_R + 14*U_O + 6*T_O)
