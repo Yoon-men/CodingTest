@@ -9,6 +9,6 @@ for _ in range(int(input())) :
         a %= b
         a, b = b, a
     GCD = a             # Great Common Divisor(GCD)
-    LCM = A*B // GCD    # Largest Common Multiple(LCM)
+    LCM = A*B // GCD    # Least Common Multiple(LCM)
     
     print(LCM)
