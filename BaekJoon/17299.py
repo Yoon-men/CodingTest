@@ -1,18 +1,16 @@
 # 백준17299 : 오등큰수
 from collections import Counter
 
-def NGF(n) : 
-    for i in A[n+1:] :         
-        if cnt[A[n]] < cnt[i] : 
-            return i
+N = int(input())
+A = list(map(int, input().split()))
 
-    return -1
+cnt = Counter(A)
+answer = [-1] * N
+stack = []
 
-if __name__ == "__main__" : 
-    N = int(input())
-    A = list(map(int, input().split()))
-    
-    cnt = Counter(A)
-    
-    answer = [NGF(i) for i in range(N)]
-    print(*answer)
+for i in range(N):
+    while stack and (cnt[A[stack[-1]]] < cnt[A[i]]):
+            answer[stack.pop()] = A[i]
+    stack.append(i)
+
+print(*answer)
