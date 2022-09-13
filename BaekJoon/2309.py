@@ -1,15 +1,13 @@
 # 백준2309 : 일곱 난쟁이
-import sys
-def check(h) : 
+import sys ; input = sys.stdin.readline
+def joyGo() : 
     for i in range(9) : 
         for j in range(1, 9) : 
-            if sum(h) - h[i] - h[j] == 100 : 
-                spy_1 = h[i]
-                spy_2 = h[j]
-                h.remove(spy_1)
-                h.remove(spy_2)
-                for i in h : 
-                    print(i)
+            if sum(Li)-Li[i]-Li[j]==100 : 
+                a, b = Li[i], Li[j]
+                Li.remove(a) ; Li.remove(b)
+                for i in Li : print(i)
                 return
 if __name__ == "__main__" : 
-    check(sorted([int(sys.stdin.readline()) for _ in range(9)]))
+    Li = sorted([int(input()) for _ in range(9)])
+    joyGo()
