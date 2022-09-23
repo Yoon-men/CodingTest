@@ -4,7 +4,7 @@ import sys ; input = sys.stdin.readline
 
 def joyGo(i, j) : 
     dq = deque()
-    dq.append([i, j])
+    dq.append((i, j))
     visited = [[0]*H for _ in range(V)]
     visited[i][j] = 1
     cnt = 0
@@ -16,7 +16,7 @@ def joyGo(i, j) :
             if (0 <= nx < V) and (0 <= ny < H) and (not visited[nx][ny]) and (m[nx][ny]=="L") : 
                 visited[nx][ny] = visited[x][y] + 1
                 cnt = max(cnt, visited[nx][ny])
-                dq.append([nx, ny])
+                dq.append((nx, ny))
     return cnt-1
 
 if __name__ == "__main__" : 
