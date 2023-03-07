@@ -22,9 +22,7 @@ def joyGo(Li: list) -> int :
 
 
 if __name__ == "__main__" : 
-    # N = int(input())
-    # Li = [int(input()) for _ in range(N)]
-
-    Li = [5, 7, 7]       # Test code
+    N = int(input())
+    Li = [int(input()) for _ in range(N)]
 
     print(joyGo(Li))
