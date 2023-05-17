@@ -3,7 +3,7 @@ import sys; input = sys.stdin.readline
 from re import sub
 
 def joyGo(txt_list: list) -> str : 
-    txt_list = [sub("[^a-z-]", "", line) for line in txt_list]
+    txt_list = [sub("[^a-z-]", "", line.lower()) for line in txt_list]
     txt_list = sorted(txt_list, key=lambda x: len(x), reverse=True)
 
     return txt_list[0].lower()
