@@ -13,21 +13,18 @@ def joyGo(N: int, M: int, maps: list) -> str :
                 if maps[nx][ny] == 'X' : continue
                 DFS(nx, ny)
 
-            
-    
     global ans
     ans = 0
     dx, dy = [-1,1,0,0], [0,0,1,-1]
     visited = [[0 for _ in range(M)] for _ in range(N)]
 
-    
     for i in range(N) : 
         for j in range(M) : 
             if maps[i][j] == 'I' : 
                 DFS(i, j)
-    
+
+
     return ans if ans > 0 else "TT"
-    
 
 
 
