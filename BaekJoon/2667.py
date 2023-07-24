@@ -1,35 +1,59 @@
 # 백준2667 : 단지번호붙이기
-from collections import deque
-import sys ; input = sys.stdin.readline
+import sys; input = sys.stdin.readline
+from collections import deque       # For BFS
 
-def joyGo(i, j) : 
-    dq = deque([(i, j)])
-    global graph
-    graph[i][j] = 0
-    cnt = 1
-    while dq : 
-        x, y = dq.popleft()
+def joyGo(N: int, _map: list) -> None : 
+    def BFS(x: int, y: int) -> int : 
+        dq = deque([(x, y)])
+        _map[x][y] = 0
+        cnt = 1
+        while dq : 
+            x, y = dq.popleft()
+            for i in range(4) : 
+                nx, ny = x+dx[i], y+dy[i]
+                if (0 <= nx < N) and (0 <= ny < N) and (_map[nx][ny]) : 
+                    _map[nx][ny] = 0
+                    cnt += 1
+                    dq.append((nx, ny))
+
+        return cnt
+
+
+    def DFS(x: int, y: int, cnt: int) -> int : 
+        _map[x][y] = 0
         for i in range(4) : 
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if (0 <= nx < N) and (0 <= ny < N) and (graph[nx][ny]) : 
-                graph[nx][ny] = 0
-                dq.append((nx, ny))
-                cnt += 1
-    
-    return cnt
+            nx, ny = x+dx[i], y+dy[i]
+            if (0 <= nx < N) and (0 <= ny < N) and (_map[nx][ny]) : 
+                cnt = DFS(nx, ny, cnt+1)
+        
+        return cnt
+
+
+    dx, dy = [-1,1,0,0], [0,0,1,-1]
+    # ans_list = sorted([BFS(i, j) for i in range(N) for j in range(N) if _map[i][j]])        # For BFS
+    ans_list = sorted([DFS(i, j, cnt=1) for i in range(N) for j in range(N) if _map[i][j]])         # For DFS
+
+    print(len(ans_list))
+    print(*ans_list, sep='\n')
+
+
 
 if __name__ == "__main__" : 
     N = int(input())
-    graph = [list(map(int, input().strip())) for _ in range(N)]
+    _map = [list(map(int, input().strip())) for _ in range(N)]
 
-    dx = [-1,1,0,0]
-    dy = [0,0,1,-1]
+    joyGo(N, _map)
 
-    cntLi = []
-    for i in range(N) : 
-        for j in range(N) : 
-            if graph[i][j] : cntLi.append(joyGo(i, j))
-    
-    print(len(cntLi))
-    print("\n".join(str(i) for i in sorted(cntLi)))
+    # ㅠㅠㅠㅠㅠㅠ < Test code / please lock the contents of this line. > ㅠㅠㅠㅠㅠㅠ
+#     N = 7
+#     tmp = """0110100
+# 0110101
+# 1110101
+# 0000111
+# 0100000
+# 0111110
+# 0111000""".split('\n')
+#     _map = [list(map(int, row)) for row in tmp]
+
+#     joyGo(N, _map)
+    # ㅛㅛㅛㅛㅛㅛ < Test code / please lock the contents of this line. > ㅛㅛㅛㅛㅛㅛ
