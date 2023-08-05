@@ -5,6 +5,7 @@ from collections import deque
 def joyGo(N: int, paint: list, graph: list) -> int : 
     def BFS(node: int) -> int : 
         dq = deque([node])
+        visited = [0] * N
         visited[node] = 1
 
         ans = 0
@@ -19,9 +20,7 @@ def joyGo(N: int, paint: list, graph: list) -> int :
         
         return ans
 
-
-    global ans
-    visited = [0] * N
+    
     ans = BFS(0)
     if paint[0] != 0 : ans += 1
 
