@@ -2,15 +2,10 @@
 import sys; input = sys.stdin.readline
 
 def joyGo(board: list) -> list : 
-    max_len = 0
-    for i in range(5) : 
-        max_len = max(max_len, len(board[i]))
-    
+    max_len = max(len(row) for row in board)
     ans = [board[j][i] for i in range(max_len) for j in range(5) if i < len(board[j])]
 
     return ans
-    
-    
 
 
 if __name__ == "__main__" : 
