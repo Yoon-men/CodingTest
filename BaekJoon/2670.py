@@ -3,15 +3,21 @@ import sys; input = sys.stdin.readline
 from typing import List
 
 def joyGo(nums: List[float]) -> float : 
+    def round(N: float, ndigits: int = 1) -> float : 
+        mul = 10 ** ndigits
+        N *= mul
+        N = int(N)+1 if (N-int(N) >= 0.5) else int(N)
+
+        return N / mul
+
+
     for i in range(1, len(nums)) : 
         nums[i] = max(nums[i-1]*nums[i], nums[i])
-    
-    ans = max(nums)
-    mul = 10**3
-    ans *= mul
-    ans = int(ans)+1 if (ans-int(ans) >= 0.5) else int(ans)
 
-    return f"{ans / mul:.3f}"
+    ans = max(nums)
+
+    return f"{round(ans, 3):.3f}"
+
 
 
 if __name__ == "__main__" : 
