@@ -2,9 +2,9 @@
 import sys; input = sys.stdin.readline
 from typing import Dict, List
 
-def joyGo(N: int, supplier_dict: Dict[str, List[str]], arrested: List) : 
+def joyGo(N: int, supplier_dict: Dict[str, List[str]], arrested: List[str]) -> int : 
     def DFS(supplier: str) -> None : 
-        global ans
+        nonlocal ans
         visited[supplier] = 1
         for demander in supplier_dict[supplier] : 
             if not visited[demander] : 
@@ -20,7 +20,6 @@ def joyGo(N: int, supplier_dict: Dict[str, List[str]], arrested: List) :
     for supplier in arrested : 
         visited[supplier] = 1
 
-    global ans
     ans = 0
     for i in range(65, 65+N) : 
         if (root[chr(i)]) and (not visited[chr(i)]) : 
