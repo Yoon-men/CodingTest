@@ -5,11 +5,11 @@ from re import split as reSplit
 
 def joyGo(txts: Tuple[str]) -> List[int] : 
     ans_list = []
-    for txt in txts : ans_list.extend(reSplit("[a-z]", txt))
+    for txt in txts : ans_list += (reSplit("[a-z]", txt))
     
     ans_list = sorted([int(item) for item in ans_list if item])
     return ans_list
-4
+
 
 if __name__ == "__main__" : 
     txts = tuple(input().strip() for _ in range(int(input())))
