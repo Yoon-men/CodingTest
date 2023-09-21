@@ -5,15 +5,15 @@ from collections import deque
 from itertools import combinations
 
 def joyGo(N: int, M: int, map_: Tuple[Tuple[int]]) -> int : 
-    def BFS(virus_list: Tuple[Tuple[int, int]]) -> int : 
+    def BFS(viruses: Tuple[Tuple[int, int]]) -> int : 
         dx, dy = [-1,1,0,0], [0,0,1,-1]
         visited = [[0] * N for _ in range(N)]
         for i in range(N) : 
             for j in range(N) : 
                 if map_[i][j] == 1 : visited[i][j] = -1
-        for x, y in virus_list : visited[x][y] = 1
+        for x, y in viruses : visited[x][y] = 1
         
-        dq = deque([virus for virus in virus_list])
+        dq = deque([virus for virus in viruses])
         res = 0
         while dq : 
             x, y = dq.popleft()
