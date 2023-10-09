@@ -1,13 +1,19 @@
 # 백준1697 : 숨바꼭질
 from collections import deque
-N, K = map(int, input().split())
-mx = 10**5
-times = [0] * (mx+1)
-q = deque([N])
-while q : 
-    L = q.popleft()
-    if L==K : print(times[L]) ; break
-    for x in (L-1, L+1, L*2) : 
-        if 0 <= x <= mx and not times[x] : 
-            times[x] = times[L] + 1
-            q.append(x)
+
+def joyGo(N: int, K: int) -> int : 
+    dq = deque([N])
+    visited = [0] * (10**5 + 1)
+    while dq : 
+        current = dq.popleft()
+        if current == K : return visited[current]
+
+        for next in (current-1, current+1, current*2) : 
+            if (0 <= next <= 10**5) and (not visited[next]) : 
+                visited[next] = visited[current] + 1
+                dq.append(next)
+
+
+if __name__ == "__main__" : 
+    N, K = map(int, input().split())
+    print(joyGo(N, K))
