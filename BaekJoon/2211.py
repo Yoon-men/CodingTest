@@ -36,22 +36,3 @@ if __name__ == "__main__" :
     print(N-1)
     for i, j in enumerate(parent_list[2:], 2) : 
         print(i, j)
-
-    # ㅠㅠㅠㅠㅠㅠ < Test code / please delete the contents of this lines. > ㅠㅠㅠㅠㅠㅠ
-#     N, M = 4, 5
-#     tmp = '''1 2 1
-# 1 4 4
-# 1 3 2
-# 4 2 2
-# 4 3 3'''.split('\n')
-#     graph = [[] for _ in range(N+1)]
-#     for i in range(M) : 
-#         A, B, C = map(int, tmp[i].split())
-#         graph[A].append((B, C))
-#         graph[B].append((A, C))
-    
-#     parent_list = joyGo(N, graph)
-#     print(N-1)
-#     for i, j in enumerate(parent_list[2:], 2) : 
-#         print(i, j)
-    # ㅛㅛㅛㅛㅛㅛ < Test code / please delete the contents of this lines. > ㅛㅛㅛㅛㅛㅛ
