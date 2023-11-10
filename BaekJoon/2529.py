@@ -45,19 +45,17 @@ if __name__ == "__main__":
 
 
 
-# ㅠㅠㅠㅠㅠㅠ < Test code / please delete the contents of this liens. > ㅠㅠㅠㅠㅠㅠ
-def test_case_1(): 
-    k = 2
-    Li = '''< >'''.split()
-    res = joyGo(k, Li)
-    ans = ("897", "021")
-    assert res == ans, f"Test Case 1 - 틀렸습니다. (your result: {res} / answer: {ans})"
+# ㅠㅠㅠㅠㅠㅠ < Test code / please delete the contents of this lines. > ㅠㅠㅠㅠㅠㅠ
+import pytest
 
-def test_case_2(): 
-    k = 9
-    Li = '''> < < < > > > < <'''.split()
+@pytest.mark.parametrize(
+    "case_num, k, Li, ans", 
+    [
+        (1, 2, '< >'.split(), ("897", "021")),
+        (2, 9, '> < < < > > > < <'.split(), tuple('9567843012\n1023765489'.split('\n')))
+    ]
+)
+def test_joyGo(case_num, k, Li, ans):
     res = joyGo(k, Li)
-    ans = tuple('''9567843012
-1023765489'''.split('\n'))
-    assert res == ans, f"Test Case 2 - 틀렸습니다. (your result: {res} / answer: {ans})"
-# ㅛㅛㅛㅛㅛㅛ < Test code / please delete the contents of this liens. > ㅛㅛㅛㅛㅛㅛ
+    assert res == ans, f"Test Case {case_num} - 틀렸습니다. (your result: {res} / answer: {ans})"
+# ㅛㅛㅛㅛㅛㅛ < Test code / please delete the contents of this lines. > ㅛㅛㅛㅛㅛㅛ
