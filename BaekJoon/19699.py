@@ -10,14 +10,14 @@ def joyGo(N: int, M: int, weight_list: List[int]) -> List[int]:
         return True
 
 
-    ans = []
+    ans = set()
 
-    comb_list = list(combinations(weight_list, M))
-    for comb in comb_list: 
+    comb_tuple = tuple(combinations(weight_list, M))
+    for comb in comb_tuple: 
         if is_prime(sum(comb)): 
-            ans.append(sum(comb))
+            ans.add(sum(comb))
     
-    return sorted(set(ans)) if ans else [-1]
+    return sorted(ans) if ans else [-1]
 
 
 
